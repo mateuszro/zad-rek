@@ -63,6 +63,10 @@ export default {
       this.showSuccessNotify = true;
       this.notifyMessage = message
       this.fetchData(this.category)
+  
+      if(message =="saved"){
+        this.addItemRow = false;
+      }
     },
     onError(error) {
       this.error = error
@@ -85,6 +89,8 @@ export default {
         item[key] = ''
       }
       delete item._id
+      delete item.created
+      delete item.edited
 
       return item
     }

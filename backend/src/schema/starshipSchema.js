@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 
-// CZY TWORZY TE DEFAULTY
-
 const starshipSchema = new mongoose.Schema({
     name: {
         required: true,
         unique: true,
+        minlength: 2,
         type: String
     },
     model: {

@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-
-
 const peopleModel = require('../model/peopleModel');
 const planetModel = require('../model/planetModel')
 const starshipModel = require('../model/starshipModel');
@@ -44,11 +42,9 @@ router.post('/people/add', async (req, res, next) => {
     const data = new peopleModel(req.body);
     try {
         const dataToSave = await data.save();
-        console.log(dataToSave)
         if(dataToSave){
             res.status(200).json(dataToSave)
         }
-        
     }
     catch (error) {
         next(error);
@@ -61,7 +57,7 @@ router.put('/people/update/:id', async (req, res, next) => {
     try {
         const id = req.params.id;
         const updatedData = req.body;
-        const options = { new: true };
+        const options = { new: true, runValidators: true };
 
         const result = await peopleModel.findByIdAndUpdate(
             id, updatedData, options
@@ -148,7 +144,7 @@ router.put('/planets/update/:id', async (req, res, next) => {
     try {
         const id = req.params.id;
         const updatedData = req.body;
-        const options = { new: true };
+        const options = { new: true, runValidators: true };
 
         const result = await planetModel.findByIdAndUpdate(
             id, updatedData, options
@@ -235,7 +231,7 @@ router.put('/starships/update/:id', async (req, res, next) => {
     try {
         const id = req.params.id;
         const updatedData = req.body;
-        const options = { new: true };
+        const options = { new: true, runValidators: true };
 
         const result = await starshipModel.findByIdAndUpdate(
             id, updatedData, options

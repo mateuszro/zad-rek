@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const peopleSchema = new mongoose.Schema({
     name: {
         required: true,
+        minlength: 2,
         unique: true,
         type: String
     },
@@ -24,9 +25,9 @@ const peopleSchema = new mongoose.Schema({
     skin_color: {
         type: String
     },
-    // homeworld: {
-    //     type: String
-    // },
+    homeworld: {
+        type: String
+    },
     films: {
         type: [String]
     },

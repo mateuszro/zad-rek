@@ -31,7 +31,6 @@ export default {
             if(valid){
                 try {
                     let res = await addItem(this.category, this.item)
-                    console.log(res)
                     if(res.status == 200){
                         this.$emit('refresh', 'saved');
                     };
@@ -39,7 +38,6 @@ export default {
                     this.$emit('error',error);
                 }
             }
-            console.log(this.item)
         }
     },
     

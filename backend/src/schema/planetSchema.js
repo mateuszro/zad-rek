@@ -4,6 +4,7 @@ const planetSchema = new mongoose.Schema({
     name: {
         required: true,
         unique: true,
+        minlength: 2,
         type: String,
     },
     rotation_period: {
